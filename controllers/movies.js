@@ -1,33 +1,33 @@
-const Movie = require('../models/movie');
-const Performer = require('../models/performer');
+const Project = require('../models/project');
+const User = require('../models/user');
 
 module.exports = {
   index,
   show,
-  new: newMovie,
+  new: newproject,
   create
 };
 
 async function index(req, res) {
-  const movies = await Movie.find({});
-  res.render('movies/index', { title: 'All Movies', movies });
+  const projects = await Project.find({});
+  res.render('projects/index', { title: 'All projects', projects: projects });
 }
 
 async function show(req, res) {
   // Populate the cast array with performer docs instead of ObjectIds
-  const movie = await Movie.findById(req.params.id).populate('cast');
-  // Mongoose query builder approach to retrieve performers not the movie:
-    // Performer.find({}).where('_id').nin(movie.cast)
+  const project = await Project.findById(req.params.id).populate('cast');
+  // Mongoose query builder approach to retrieve performers not the project:
+    // Performer.find({}).where('_id').nin(project.cast)
   // The native MongoDB approach uses a query object to find 
-  // performer docs whose _ids are not in the movie.cast array like this:
-  const performers = await Performer.find({ _id: { $nin: movie.cast } }).sort('name');
-  res.render('movies/show', { title: 'Movie Detail', movie, performers });
+  // performer docs whose _ids are not in the project.cast array like this:
+  const performers = await User.find({ _id: { $nin: project.cast } }).sort('name');
+  res.render('projects/show', { title: 'project Detail', project, performers });
 }
 
-function newMovie(req, res) {
+function newproject(req, res) {
   // We'll want to be able to render an  
   // errorMsg if the create action fails
-  res.render('movies/new', { title: 'Add Movie', errorMsg: '' });
+  res.render('projects/new', { title: 'Add project', errorMsg: '' });
 }
 
 async function create(req, res) {
@@ -38,13 +38,13 @@ async function create(req, res) {
     if (req.body[key] === '') delete req.body[key];
   }
   try {
-    // Update this line because now we need the _id of the new movie
-    const movie = await Movie.create(req.body);
-    // Redirect to the new movie's show functionality 
-    res.redirect(`/movies/${movie._id}`);
+    // Update this line because now we need the _id of the new project
+    const project = await Project.create(req.body);
+    // Redirect to the new project's show functionality 
+    res.redirect(`/projects/${project._id}`);
   } catch (err) {
     // Typically some sort of validation error
     console.log(err);
-    res.render('movies/new', { errorMsg: err.message });
+    res.render('projects/new', { errorMsg: err.message });
   }
 }
