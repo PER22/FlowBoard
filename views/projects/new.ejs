@@ -1,20 +1,20 @@
 <%- include('../partials/header') %>
 
-<form id="new-form" action="/movies" method="POST">
+<form id="new-form" action="/projects" method="POST">
   <label>Title:</label>
   <input type="text" name="title">
-  <label>Release Year:</label>
-  <input type="text" name="releaseYear">
-  <label>MPAA Rating</label>
+  <label>Description</label>
+  <input type="text" name="description">
+  <label>Priority</label>
+  <input type="number" name="releaseYear">
+  <label>Priority</label>
   <select name="mpaaRating">
-    <option value="G">G</option>
-    <option value="PG">PG</option>
-    <option value="PG-13">PG-13</option>
-    <option value="R">R</option>
+    <option value="P1">P1</option>
+    <option value="P2">P2</option>
+    <option value="P3">P3</option>
+    <option value="P4">P4</option>
+    <option value="P5">P5</option>
   </select>
-  <label>Now Showing:</label>
-  <input type="checkbox" name="nowShowing" checked>
-  <input type="submit" value="Add Movie">
 </form>
 
 <%- include('../partials/footer') %>

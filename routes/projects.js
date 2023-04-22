@@ -22,6 +22,6 @@ router.get('/:id/edit', ensureLoggedIn, projects.edit);
 router.put('/:id', ensureLoggedIn, projects.update);
 
 // DELETE /projects/:id
-router.delete('/:id', ensureLoggedIn, projects.delete);
+router.delete('/:id', ensureLoggedIn, projects.destroy);
 
 module.exports = router;

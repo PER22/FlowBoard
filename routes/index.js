@@ -2,17 +2,21 @@ var express = require('express');
 var router = express.Router();
 const passport = require('passport');
 
-router.get('/', function(req, res, next) {
-  res.redirect('/projects');
+// Route for the landing page
+router.get('/', function(req, res) {
+  // If user is logged in, redirect to projects index
+  if (req.user) {
+    res.redirect('/projects');
+  }
+
+  // Otherwise, render the signup page
+  res.render('landing', { title: 'Sign up' });
 });
 
 router.get('/auth/google', passport.authenticate(
   'google',
   {
-    // Requesting the user's profile and email
     scope: ['profile', 'email',],
-    // Optionally force pick account every time
-    // prompt: "select_account"
   }
 ));
 

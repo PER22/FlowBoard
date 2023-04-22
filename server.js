@@ -13,9 +13,7 @@ require('./config/database');
 require('./config/passport');
 
 const indexRouter = require('./routes/index');
-const moviesRouter = require('./routes/movies');
-const reviewsRouter = require('./routes/reviews');
-const performersRouter = require('./routes/performers');
+const projectsRouter = require('./routes/projects');
 
 
 var app = express();
@@ -44,11 +42,8 @@ app.use(function (req, res, next) {
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/movies', moviesRouter);
-// Mount these routers to root because not all 
-// paths for a related/nested resource begin the same
-app.use('/', reviewsRouter);
-app.use('/', performersRouter);
+app.use('/projects', projectsRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
