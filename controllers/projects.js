@@ -55,7 +55,7 @@ async function update(req, res) {
 async function destroy(req, res) {
   const project = await Project.findOne({ _id: req.params.id, owner: req.user._id });
   if (!project) return res.status(404).send('Project not found.');
-  await project.remove();
+  await project.deleteOne();
   res.redirect('/projects');
 }
 

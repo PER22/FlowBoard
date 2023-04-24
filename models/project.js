@@ -15,6 +15,9 @@ const taskSchema = new Schema({
     type: String,
     enum: ["P1", "P2", "P3", "P4", "P5"]
   },
+  due: {
+    type: Date
+  },
   teamMembers: [{
     type: Schema.Types.ObjectId,
     ref: 'User',
@@ -44,6 +47,9 @@ const ProjectSchema = new Schema({
   priority: {
     type: String,
     enum: ["P1", "P2", "P3", "P4", "P5"]
+  },
+  due: {
+    type: Date
   },
   owner: {
     type: Schema.Types.ObjectId,
