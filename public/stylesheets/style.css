@@ -190,14 +190,15 @@ hr {
   height: 40px;
 }
 
-.P1  {background-color: rgba(255, 97, 97, 0.65);}
-.P2 {background-color: rgba(255, 194, 82, 0.65);}
-.P3 {background-color: rgba(255, 255, 157, 0.65);}
-.P4 {background-color: rgba(101, 213, 101, 0.65);}
-.P5{background-color: rgba(123, 132, 255, 0.65);}
+.P1{background-color: rgb(255, 47, 47);}
+.P2{background-color: rgb(255, 179, 37);}
+.P3{background-color: rgb(255, 255, 67);}
+.P4{background-color: rgb(0, 128, 0);}
+.P5{background-color: rgb(60, 60, 255);}
 
-.P1 + .incomplete {background-color: rgba(255, 47, 47, 0.65);}
-.P2 + .incomplete {background-color: rgba(255, 179, 37, 0.65);}
-.P3 + .incomplete {background-color: rgba(255, 255, 67, 0.65);}
-.P4 + .incomplete {background-color: rgba(0, 128, 0, 0.65);}
-.P5 + .incomplete {background-color: rgba(60, 60, 255, 0.65);}
+.P1.complete {background-color: rgba(255, 161, 161, 0.65);}
+.P2.complete {background-color: rgba(255, 212, 132, 0.65);}
+.P3.complete {background-color: rgba(255, 255, 181, 0.65);}
+.P4.complete {background-color: rgba(153, 255, 153, 0.65);}
+.P5.complete {background-color: rgba(157, 163, 255, 0.65);}
+
