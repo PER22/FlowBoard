@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const taskSchema = new Schema({
   title: {
     type: String,
-    required: true
+    //required: true
   },
   priority: {
     type: Number,
@@ -16,12 +16,12 @@ const taskSchema = new Schema({
   teamMembers: [{
     type: Schema.Types.ObjectId,
     ref: 'User',
-    required: false
+    //required: false
   }],
   owner: {
     type: Schema.Types.ObjectId,
     ref: 'User',
-    required: true
+    //required: true
   },
   userName: String,
   userAvatar: String
@@ -34,7 +34,7 @@ const taskSchema = new Schema({
 const ProjectSchema = new Schema({
   name: {
     type: String,
-    required: true
+    //required: true
   },
   description: {
     type: String
@@ -42,16 +42,17 @@ const ProjectSchema = new Schema({
   owner: {
     type: Schema.Types.ObjectId,
     ref: 'User',
-    required: true
+    //required: true
   },
   teamMembers: [{
     type: Schema.Types.ObjectId,
     ref: 'User',
-    required: false
+    //required: false
   }],
   tasks: [{
     type: Schema.Types.ObjectId,
-    ref: 'Task'
+    ref: 'Task',
+    //required: false
   }]
 }, { timestamps: true });
 

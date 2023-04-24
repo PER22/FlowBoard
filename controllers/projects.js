@@ -3,7 +3,7 @@ const User = require('../models/user');
 
 async function index(req, res) {
   const projects = await Project.find({ user: req.user._id });
-  res.render('projects/index', { title: 'All Projects', projects });
+  res.render('projects/index', { title: 'Projects Index Template', projects:projects });
 }
 
 async function newProject(req, res) {
