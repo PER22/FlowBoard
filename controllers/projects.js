@@ -7,20 +7,22 @@ async function index(req, res) {
 }
 
 async function newProject(req, res) {
-  res.render('projects/new', { title: 'Add Project' });
+  res.render('projects/new', { title: 'Create Project' });
 }
 
 async function create(req, res) {
   const project = new Project({
-    name: req.body.name,
+    title: req.body.title,
     description: req.body.description,
-    user: req.user._id
+    user: req.user._id,
+    priority: req.body.priority,
+    due: req.body.due
   });
   try {
     await project.save();
     res.redirect('/projects');
   } catch (err) {
-    res.render('projects/new', { title: 'Add Project', error: err });
+    res.render('projects/new', { title: 'Create Project', error: err });
   }
 }
 

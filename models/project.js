@@ -7,11 +7,13 @@ const taskSchema = new Schema({
     type: String,
     //required: true
   },
+  description: {
+    type: String,
+    //required: true
+  },
   priority: {
-    type: Number,
-    min: 1,
-    max: 5,
-    default: 5
+    type: String,
+    enum: ["P1", "P2", "P3", "P4", "P5"]
   },
   teamMembers: [{
     type: Schema.Types.ObjectId,
@@ -32,12 +34,16 @@ const taskSchema = new Schema({
 
 
 const ProjectSchema = new Schema({
-  name: {
+  title: {
     type: String,
     //required: true
   },
   description: {
     type: String
+  },
+  priority: {
+    type: String,
+    enum: ["P1", "P2", "P3", "P4", "P5"]
   },
   owner: {
     type: Schema.Types.ObjectId,

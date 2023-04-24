@@ -1,12 +1,26 @@
 <%- include('../partials/header') %>
 
-
-<% projects.forEach((project, index)=>{ %>
-    <!-- <h1><%= project.title %></h1>
-    <h3><%= project.description %></h3>
-    <h3><%= project.priority %></h3> -->
-    <!-- <h3><%= project.due %></h3> -->
-    <h3><%= JSON.stringify(project) %></h3
-<% }) %>
+<table id="list">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Due</th>
+        <th>Priority</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% projects.forEach(function(project) { %>
+        <%console.log(project)%>
+        <tr>
+          <td><%= project.title %></td>
+          <td><%= project.description %></td>
+          <td><%= project.due %></td>
+          <td><%= project.priority %></td>
+          <td><a href="/projects/<%= m._id %>">DETAILS</a></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
 
 <%- include('../partials/footer') %>
