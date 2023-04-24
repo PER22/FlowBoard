@@ -2,7 +2,8 @@ const Project = require('../models/project');
 const User = require('../models/user');
 
 async function index(req, res) {
-  const projects = await Project.find({ user: req.user._id });
+  console.log("Index was called");
+  const projects = await Project.find({ owner: req.body._id });
   res.render('projects/index', { title: 'Projects Index Template', projects:projects });
 }
 
@@ -14,7 +15,7 @@ async function create(req, res) {
   const project = new Project({
     title: req.body.title,
     description: req.body.description,
-    user: req.user._id,
+    owner: req.body._id,
     priority: req.body.priority,
     due: req.body.due
   });
@@ -27,19 +28,19 @@ async function create(req, res) {
 }
 
 async function show(req, res) {
-  const project = await Project.findOne({ _id: req.params.id, user: req.user._id });
+  const project = await Project.findOne({ _id: req.params.id, owner: req.user._id });
   if (!project) return res.status(404).send('Project not found.');
   res.render('projects/show', { title: project.name, project });
 }
 
 async function edit(req, res) {
-  const project = await Project.findOne({ _id: req.params.id, user: req.user._id });
+  const project = await Project.findOne({ _id: req.params.id, owner: req.user._id });
   if (!project) return res.status(404).send('Project not found.');
   res.render('projects/edit', { title: `Edit ${project.name}`, project });
 }
 
 async function update(req, res) {
-  const project = await Project.findOne({ _id: req.params.id, user: req.user._id });
+  const project = await Project.findOne({ _id: req.params.id, owner: req.user._id });
   if (!project) return res.status(404).send('Project not found.');
   project.name = req.body.name;
   project.description = req.body.description;
@@ -52,14 +53,14 @@ async function update(req, res) {
 }
 
 async function destroy(req, res) {
-  const project = await Project.findOne({ _id: req.params.id, user: req.user._id });
+  const project = await Project.findOne({ _id: req.params.id, owner: req.user._id });
   if (!project) return res.status(404).send('Project not found.');
   await project.remove();
   res.redirect('/projects');
 }
 
 module.exports = {
-  index,
+  index: index,
   new: newProject,
   create,
   show,
