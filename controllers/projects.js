@@ -2,8 +2,7 @@ const Project = require('../models/project');
 const User = require('../models/user');
 
 async function index(req, res) {
-  console.log("Index was called");
-  const projects = await Project.find({ owner: req.body._id });
+  const projects = await Project.find({ owner: req.user._id });
   res.render('projects/index', { title: 'Projects Index Template', projects:projects });
 }
 
@@ -15,7 +14,7 @@ async function create(req, res) {
   const project = new Project({
     title: req.body.title,
     description: req.body.description,
-    owner: req.body._id,
+    owner: req.user._id,
     priority: req.body.priority,
     due: req.body.due
   });
@@ -28,6 +27,7 @@ async function create(req, res) {
 }
 
 async function show(req, res) {
+  console.log(`Show function called: _id: ${req.params.id}, owner: ${req.user._id}`)
   const project = await Project.findOne({ _id: req.params.id, owner: req.user._id });
   if (!project) return res.status(404).send('Project not found.');
   res.render('projects/show', { title: project.name, project });
@@ -55,7 +55,7 @@ async function update(req, res) {
 async function destroy(req, res) {
   const project = await Project.findOne({ _id: req.params.id, owner: req.user._id });
   if (!project) return res.status(404).send('Project not found.');
-  await project.remove();
+  await project.deleteOne();
   res.redirect('/projects');
 }
 
