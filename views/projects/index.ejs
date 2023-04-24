@@ -1,0 +1,12 @@
+<%- include('../partials/header') %>
+
+
+<% projects.forEach((project, index)=>{ %>
+    <!-- <h1><%= project.title %></h1>
+    <h3><%= project.description %></h3>
+    <h3><%= project.priority %></h3> -->
+    <!-- <h3><%= project.due %></h3> -->
+    <h3><%= JSON.stringify(project) %></h3
+<% }) %>
+
+<%- include('../partials/footer') %>
