@@ -1,4 +1,4 @@
-* {
+/* * {
   box-sizing: border-box;
   font-family: Helvetica;
   color: #424748;
@@ -141,7 +141,7 @@ hr {
 #badge-container {
   display: flex;
   flex-wrap: wrap;
-  /* padding: 1rem; */
+  padding: 1rem; 
   width: 80%;
   border: 2px solid #B8C0C2;
   border-radius: .5rem;
@@ -188,7 +188,25 @@ hr {
 .review-user img {
   border-radius: 50%;
   height: 40px;
+} */
+
+
+
+.navbar-brand > img {
+  height: 2rem;
+  margin-left: 1rem;
 }
+.nav-link > img {
+  height: 1.5rem;
+}
+
+
+
+.picture-on-sign-up-page {
+  height: 8rem;
+}
+
+
 
 .P1{background-color: rgb(255, 47, 47);}
 .P2{background-color: rgb(255, 179, 37);}
