@@ -11,13 +11,12 @@
     </thead>
     <tbody>
       <% projects.forEach(function(project) { %>
-        <%console.log(project)%>
-        <tr>
+        <tr class= <%= project.priority %> >
           <td><%= project.title %></td>
           <td><%= project.description %></td>
           <td><%= project.due %></td>
           <td><%= project.priority %></td>
-          <td><a href="/projects/<%= project._id %>">DETAILS</a></td>
+          <td><a href="/projects/<%=project._id%>">DETAILS</a></td>
         </tr>
         <% }); %>
       </tbody>
