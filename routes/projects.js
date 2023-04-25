@@ -19,7 +19,7 @@ router.get('/:id', ensureLoggedIn, projects.showProject);
 router.get('/:id/edit', ensureLoggedIn, projects.editProject);
 
 // PUT /projects/:id
-router.put('/:id', ensureLoggedIn, projects.update);
+router.put('/:id', ensureLoggedIn, projects.updateProject);
 
 // DELETE /projects/:id
 router.delete('/:id', ensureLoggedIn, projects.destroyProject);
@@ -27,7 +27,7 @@ router.delete('/:id', ensureLoggedIn, projects.destroyProject);
 //////////TASK Routes
 // GET /projects/:projectId/tasks
 //all tasks that are in one project
-router.get('/:projectId/tasks', ensureLoggedIn, projects.showTasks);
+router.get('/:projectId/tasks', ensureLoggedIn, projects.indexTask);
 
 
 router.get('/:projectId/tasks/new', ensureLoggedIn, projects.newTask);
