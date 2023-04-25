@@ -1,7 +1,7 @@
 const Project = require('../models/project');
 const User = require('../models/user');
 
-async function index(req, res) {
+async function indexProject(req, res) {
   const projects = await Project.find({ owner: req.user._id });
   res.render('projects/index', { title: 'Projects Index Template', projects:projects });
 }
@@ -10,7 +10,7 @@ async function newProject(req, res) {
   res.render('projects/new', { title: 'Create Project' });
 }
 
-async function create(req, res) {
+async function createProject(req, res) {
   const project = new Project({
     title: req.body.title,
     description: req.body.description,
@@ -26,20 +26,20 @@ async function create(req, res) {
   }
 }
 
-async function show(req, res) {
+async function showProject(req, res) {
   console.log(`Show function called: _id: ${req.params.id}, owner: ${req.user._id}`)
   const project = await Project.findOne({ _id: req.params.id, owner: req.user._id });
   if (!project) return res.status(404).send('Project not found.');
   res.render('projects/show', { title: project.name, project });
 }
 
-async function edit(req, res) {
+async function editProject(req, res) {
   const project = await Project.findOne({ _id: req.params.id, owner: req.user._id });
   if (!project) return res.status(404).send('Project not found.');
   res.render('projects/edit', { title: `Edit ${project.name}`, project });
 }
 
-async function update(req, res) {
+async function updateProject(req, res) {
   const project = await Project.findOne({ _id: req.params.id, owner: req.user._id });
   if (!project) return res.status(404).send('Project not found.');
   project.name = req.body.name;
@@ -52,19 +52,37 @@ async function update(req, res) {
   }
 }
 
-async function destroy(req, res) {
+async function destroyProject(req, res) {
   const project = await Project.findOne({ _id: req.params.id, owner: req.user._id });
   if (!project) return res.status(404).send('Project not found.');
   await project.deleteOne();
   res.redirect('/projects');
 }
 
+
+async function indexTask(req, res){}
+async function newTask(req, res){}
+async function createTask(req, res){}
+async function showTask(req, res){}
+async function editTask(req, res){}
+async function updateTask(req, res){}
+async function destroyTask(req, res){}
+
+
 module.exports = {
-  index: index,
-  new: newProject,
-  create,
-  show,
-  edit,
-  update,
-  destroy
+  indexProject,
+  newProject,
+  createProject,
+  showProject,
+  editProject,
+  updateProject,
+  destroyProject,
+
+  indexTask,
+  newTask,
+  createTask,
+  showTask,
+  editTask,
+  updateTask,
+  destroyTask
 };
