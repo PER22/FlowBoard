@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 // optional shortcut to the mongoose.Schema class
 const Schema = mongoose.Schema;
 
-const taskSchema = new Schema({
+const TaskSchema = new Schema({
   title: {
     type: String,
     //required: true
@@ -61,11 +61,12 @@ const ProjectSchema = new Schema({
     ref: 'User',
     //required: false
   }],
-  tasks: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Task',
-    default: []
-  }]
-}, { timestamps: true });
+  // tasks: [{
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'Task',
+  //   default: []
+  tasks:[TaskSchema]
 
-module.exports = mongoose.model('Project', ProjectSchema);
+}, { timestamps: true });
+// taskmodel = mongoose.model('Task', TaskSchema)
+module.exports = mongoose.model('Project', ProjectSchema)

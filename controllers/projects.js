@@ -64,7 +64,8 @@ async function destroyProject(req, res) {
 
 async function indexTask(req, res){
   const currentProject = await Project.findOne({ projectOwner: req.user._id, _id: req.params.projectId });
-  res.render( 'tasks/index',{tasks:currentProject.tasks});
+  const currentTask = currentProject.tasks.find((task, index,array)=>{return task._id ===req.params.taskId})
+  res.render( 'tasks/index',{title : currentProject.title, project:currentProject, tasks : currentProject.tasks});
 }
 
 async function newTask(req, res){
@@ -75,18 +76,17 @@ async function newTask(req, res){
 
 async function createTask(req, res){
   try {
-    const newTask = {
-      title: req.body.title,
-      description: req.body.description,
-      priority: req.body.priority,
-      due: req.body.due,
-      taskOwner: req.user._id,
-    };
-    const projectToAddTaskOnto = await Project.findOneAndUpdate(
+
+    projectToAddTaskOnto = await Project.findOneAndUpdate(
       { projectOwner: req.user._id,  _id: req.params.projectId},
-      { $push: { tasks: newTask } },
+      { $push: { tasks: {title: req.body.title,
+    description: req.body.description,
+    priority: req.body.priority,
+    due: req.body.due,
+    taskOwner: req.user._id} } },
       { new: true }
     );
+  
   
     res.redirect(`/projects/${projectToAddTaskOnto._id}/tasks`); //redirect to the task index page for that Project
   } catch (err) {
@@ -94,7 +94,13 @@ async function createTask(req, res){
   }
 }
 
-async function showTask(req, res){}
+async function showTask(req, res){
+  const currentProject = await Project.findOne({ _id: req.params.projectId, projectOwner: req.user._id });
+  if (!currentProject) return res.status(404).send('Project not found.');
+  currentTask = currentProject.tasks.find((task, index,array)=>{return task._id == req.params.taskId})
+  console.log(currentTask);
+  res.render('tasks/show', { title: currentProject.title, project: currentProject, task: currentTask });
+}
 
 async function editTask(req, res){}
 
