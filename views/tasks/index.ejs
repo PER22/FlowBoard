@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
 
 <% tasks.forEach((task)=>{ %>
-    <h1><%= task.title%></h1>
+    <h1><a href='/projects/<%=project._id%>/tasks/<%=task._id%>'><%= task.title%></a></h1>
     
 <% });  %>
 
