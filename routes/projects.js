@@ -24,6 +24,12 @@ router.put('/:id', ensureLoggedIn, projects.updateProject);
 // DELETE /projects/:id
 router.delete('/:id', ensureLoggedIn, projects.destroyProject);
 
+
+
+
+
+
+
 //////////TASK Routes
 // GET /projects/:projectId/tasks
 //all tasks that are in one project

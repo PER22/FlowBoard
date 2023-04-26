@@ -1,0 +1,27 @@
+<%- include('../partials/header') %>
+<%console.log("Logging from new.ejs" + JSON.stringify(project)) %>
+<form method="POST" action="/projects/<%= project.id %>/tasks">
+    <label>Title:</label>
+    <input type="text" name="title">
+    
+    <label>Description:</label>
+    <textarea name="description"></textarea>
+    
+    <label>Priority</label>
+    <select name="priority">
+      <option value="P1">P1</option>
+      <option value="P2">P2</option>
+      <option value="P3">P3</option>
+      <option value="P4">P4</option>
+      <option value="P5">P5</option>
+    </select>
+
+    <label>Due:</label>
+    <input type="datetime-local" name="due">
+
+    
+    <input type="submit" value="Add Task">
+
+</form>
+
+<%- include('../partials/footer') %>
