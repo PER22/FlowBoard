@@ -23,13 +23,11 @@ const taskSchema = new Schema({
     ref: 'User',
     //required: false
   }],
-  owner: {
+  taskOwner: {
     type: Schema.Types.ObjectId,
     ref: 'User',
     //required: true
   },
-  userName: String,
-  userAvatar: String
 }, {
   timestamps: true
 });
@@ -51,7 +49,9 @@ const ProjectSchema = new Schema({
   due: {
     type: Date
   },
-  owner: {
+  isTask: {type: Boolean},
+
+  projectOwner: {
     type: Schema.Types.ObjectId,
     ref: 'User',
     //required: true
@@ -64,7 +64,7 @@ const ProjectSchema = new Schema({
   tasks: [{
     type: Schema.Types.ObjectId,
     ref: 'Task',
-    //required: false
+    default: []
   }]
 }, { timestamps: true });
 

@@ -2,11 +2,11 @@ const Project = require('../models/project');
 const User = require('../models/user');
 
 async function indexProject(req, res) {
-  const projects = await Project.find({ owner: req.user._id });
+  const projects = await Project.find({ projectOwner: req.user._id });
   res.render('projects/index', { title: 'Projects Index Template', projects:projects });
 }
 
-async function newProject(req, res) {
+function newProject(req, res) {
   res.render('projects/new', { title: 'Create Project' });
 }
 
@@ -14,7 +14,7 @@ async function createProject(req, res) {
   const project = new Project({
     title: req.body.title,
     description: req.body.description,
-    owner: req.user._id,
+    projectOwner: req.user._id,
     priority: req.body.priority,
     due: req.body.due
   });
@@ -27,20 +27,19 @@ async function createProject(req, res) {
 }
 
 async function showProject(req, res) {
-  console.log(`Show function called: _id: ${req.params.id}, owner: ${req.user._id}`)
-  const project = await Project.findOne({ _id: req.params.id, owner: req.user._id });
+  const project = await Project.findOne({ _id: req.params.id, projectOwner: req.user._id });
   if (!project) return res.status(404).send('Project not found.');
   res.render('projects/show', { title: project.name, project });
 }
 
 async function editProject(req, res) {
-  const project = await Project.findOne({ _id: req.params.id, owner: req.user._id });
+  const project = await Project.findOne({ _id: req.params.id, projectOwner: req.user._id });
   if (!project) return res.status(404).send('Project not found.');
   res.render('projects/edit', { title: `Edit ${project.name}`, project });
 }
 
 async function updateProject(req, res) {
-  const project = await Project.findOne({ _id: req.params.id, owner: req.user._id });
+  const project = await Project.findOne({ _id: req.params.id, projectOwner: req.user._id });
   if (!project) return res.status(404).send('Project not found.');
   project.name = req.body.name;
   project.description = req.body.description;
@@ -53,19 +52,54 @@ async function updateProject(req, res) {
 }
 
 async function destroyProject(req, res) {
-  const project = await Project.findOne({ _id: req.params.id, owner: req.user._id });
+  const project = await Project.findOne({ _id: req.params.id, projectOwner: req.user._id });
   if (!project) return res.status(404).send('Project not found.');
   await project.deleteOne();
   res.redirect('/projects');
 }
 
 
-async function indexTask(req, res){}
-async function newTask(req, res){}
-async function createTask(req, res){}
+
+
+
+async function indexTask(req, res){
+  const currentProject = await Project.findOne({ projectOwner: req.user._id, _id: req.params.projectId });
+  res.render( 'tasks/index',{tasks:currentProject.tasks});
+}
+
+async function newTask(req, res){
+  const currentProject = await Project.findOne({ projectOwner: req.user._id,  _id: req.params.projectId });
+  console.log("Logging currentProject from controllers/projects.js newTask().")
+  res.render("tasks/new", { title: 'Create Task', project: currentProject });
+}
+
+async function createTask(req, res){
+  try {
+    const newTask = {
+      title: req.body.title,
+      description: req.body.description,
+      priority: req.body.priority,
+      due: req.body.due,
+      taskOwner: req.user._id,
+    };
+    const projectToAddTaskOnto = await Project.findOneAndUpdate(
+      { projectOwner: req.user._id,  _id: req.params.projectId},
+      { $push: { tasks: newTask } },
+      { new: true }
+    );
+  
+    res.redirect(`/projects/${projectToAddTaskOnto._id}/tasks`); //redirect to the task index page for that Project
+  } catch (err) {
+  console.log(err)
+  }
+}
+
 async function showTask(req, res){}
+
 async function editTask(req, res){}
+
 async function updateTask(req, res){}
+
 async function destroyTask(req, res){}
 
 
