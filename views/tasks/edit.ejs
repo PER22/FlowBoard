@@ -1,10 +1,10 @@
 <%- include('../partials/header') %>
-<form method="POST" action="/projects/<%= project.id %>/tasks">
+<form method="POST" action="/projects/<%= project._id %>/tasks/<%=task._id%>?_method=PUT">
     <label>Title:</label>
-    <input type="text" name="title">
+    <input type="text" name="title" value="<%=task.title%>">
     
     <label>Description:</label>
-    <textarea name="description"></textarea>
+    <textarea name="description"><%=task.description%></textarea>
     
     <label>Priority</label>
     <select name="priority">
@@ -16,10 +16,9 @@
     </select>
 
     <label>Due:</label>
-    <input type="datetime-local" name="due">
-
+    <input type="datetime-local" name="due" value="<%=task.due%>">
     
-    <input type="submit" value="Add Task">
+    <input type="submit" value="Save Changes">
 
 </form>
 
