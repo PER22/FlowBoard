@@ -199,13 +199,16 @@ hr {
 .nav-link > img {
   height: 1.5rem;
 }
-
-
+body {
+  background-color: #B5844F;
+}
+nav{
+  display: flex;
+}
 
 .picture-on-sign-up-page {
   height: 8rem;
 }
-
 
 
 .P1{background-color: rgb(255, 47, 47);}
