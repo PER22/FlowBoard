@@ -1,8 +1,28 @@
 <%- include('../partials/header') %>
 
 
-<h1><%= task.title%></h1>
-<h2><%= task.priority%></h2>
+<table id="list">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Due</th>
+        <th>Priority</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr class= <%= project.priority %> >
+          <td><%= task.title %></td>
+          <td><%= task.description %></td>
+          <td><%= task.due %></td>
+          <td><%= task.priority %></td>
+          <td><a href="/projects/<%=project.id%>/tasks/<%=task.id%>/edit">Edit this task</a></td>
+          <td><form id="task-delete-form" action="/projects/<%=project._id%>/tasks/<%=task._id%>?_method=DELETE" method="POST">
+            <input type="submit" value="Delete Task">
+          </form></td>
+        </tr>
+      </tbody>
+    </table>
 
 
 <%- include('../partials/footer') %>
