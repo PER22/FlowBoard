@@ -1,0 +1,9 @@
+<div class="project-container <%=project.priority%>">
+    <div class="project-info-item project-title"><span class="priority-bubble <%=project.priority%>"><%=project.priority%></span> 
+        <%= project.title %> 
+    </div>
+    <div class="project-info-item project-description"><%= project.description %></div>
+    <div class="project-info-item project-due"><em><%= project.due.toLocaleDateString("en-us") %></em></div>    
+    <div class="project-info-item"><a href="/projects/<%=project._id%>">More Details</a></div>
+</div>
+

@@ -10,7 +10,7 @@ router.get('/', function(req, res) {
   }
 
   // Otherwise, render the signup page
-  res.render('index', { title: 'Sign up with Google' });
+  res.render('index', { title: 'Sign up' });
 });
 
 router.get('/auth/google', passport.authenticate(
