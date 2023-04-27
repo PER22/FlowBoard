@@ -2,50 +2,14 @@
 
 
 
-<table class="project-index-table">
-  <tbody>
-    <tr>
-      <td class="title">Title</td>
-      <td class="description">Description%></td>
-      <td class="due">Due</td>
-      <td class="priority">Priority%></td>
-      <td>See more</td>
-    </tr>
-    <% projects.forEach(function(project) { %>
-      <tr class= <%= project.priority %> >
-        <td class="title"><%= project.title %></td>
-        <td class="description"><%= project.description %></td>
-        <td class="due"><%= project.due %></td>
-        <td class="priority"><%= project.priority %></td>
-        <td><a href="/projects/<%=project._id%>">DETAILS</a></td>
-      </tr>
-      <% }); %>
-    </tbody>
-</table>
 
-
-
-
-<!-- <table id="list">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Due</th>
-        <th>Priority</th>
-      </tr>
-    </thead>
-    <tbody>
+    <div class="project-list-container">
       <% projects.forEach(function(project) { %>
-        <tr class= <%= project.priority %> >
-          <td><%= project.title %></td>
-          <td><%= project.description %></td>
-          <td><%= project.due %></td>
-          <td><%= project.priority %></td>
-          <td><a href="/projects/<%=project._id%>">DETAILS</a></td>
-        </tr>
-        <% }); %>
-      </tbody>
-    </table> -->
+        <%-include('../partials/projectoverview', {project: project}) %>
+      <% }); %>
+    </div>
+  
+ 
+ 
 
 <%- include('../partials/footer') %>

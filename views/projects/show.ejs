@@ -3,14 +3,16 @@
 <section id="show-page">
   <h1><%= project.title %></h1>
   <p><%= project.description %></p>
-  <div><%= project.owner %></div>
   <div><%= project.priority %></div>
   
-  <a href="/projects/<%=project._id%>/edit">Click to edit me</a>
-  <form id="project-delete-form" action="/projects/<%=project._id%>?_method=DELETE" method="POST">
-    <input type="submit" value="Delete Project">
-  </form>
-  
+  <div class="project-button-container">
+    <div class="edit-project-button"><a class="edit-project-link"href="/projects/<%=project._id%>/edit">Edit Project</a></div>
+
+    <form id="project-delete-form" action="/projects/<%=project._id%>?_method=DELETE" method="POST">
+      <input class="delete-project-button" type="submit" value="Delete Project">
+    </form>
+  </div>
+    
 </section>
   
 <%- include('../partials/footer') %>
