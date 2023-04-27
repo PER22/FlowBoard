@@ -1,4 +1,4 @@
-* {
+/* * {
   box-sizing: border-box;
   font-family: Helvetica;
   color: #424748;
@@ -141,7 +141,7 @@ hr {
 #badge-container {
   display: flex;
   flex-wrap: wrap;
-  /* padding: 1rem; */
+  padding: 1rem; 
   width: 80%;
   border: 2px solid #B8C0C2;
   border-radius: .5rem;
@@ -188,7 +188,61 @@ hr {
 .review-user img {
   border-radius: 50%;
   height: 40px;
+} */
+
+
+
+
+.navbar-brand > img {
+  height: 2rem;
+  margin-left: 1rem;
 }
+.nav-link > img {
+  height: 1.5rem;
+}
+body {
+  background-color: #ADDFFF;
+}
+nav{
+  display: flex;
+  font-family: 'Amatic SC', cursive;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.picture-on-sign-up-page {
+  height: 8rem;
+}
+
+
+.index-page-words, h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Amatic SC', cursive;
+  font-weight: bold;
+}
+
+
+.index-page-words {
+  margin-top: 1rem;
+  font-size: 5em;
+}
+
+.project-index-table, thead {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  
+}
+
+.priority-bubble {
+  width: 1em
+  height 1em;
+}
+
+
 
 .P1{background-color: rgb(255, 47, 47);}
 .P2{background-color: rgb(255, 179, 37);}
@@ -202,3 +256,9 @@ hr {
 .P4.complete {background-color: rgba(153, 255, 153, 0.65);}
 .P5.complete {background-color: rgba(157, 163, 255, 0.65);}
 
+
+@media only screen and (min-width: 600px) {
+h1{
+  font-size: 8em;
+}
+}
