@@ -3,13 +3,13 @@
 <form id="project-edit-form" action="/projects/<%=project._id%>?_method=PUT" method="POST">
 
     <label>Title:</label>
-  <input type="text" name="title" value="<%=project.title%>">
+  <input type="text" name="title" value="<%=project.title%>"><br>
 
   <label>Description:</label>
-  <textarea name="description"><%=project.description%></textarea>
+  <textarea name="description"><%=project.description%></textarea><br>
 
   <label>Due:</label>
-  <input type="datetime-local" name="due" value="<%=project.due%>">
+  <input type="datetime-local" name="due" value="<%=project.due%>"><br>
 
   <label>Priority</label>
   <select name="priority">

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 // optional shortcut to the mongoose.Schema class
 const Schema = mongoose.Schema;
 
-const taskSchema = new Schema({
+const TaskSchema = new Schema({
   title: {
     type: String,
     //required: true
@@ -23,13 +23,11 @@ const taskSchema = new Schema({
     ref: 'User',
     //required: false
   }],
-  owner: {
+  taskOwner: {
     type: Schema.Types.ObjectId,
     ref: 'User',
     //required: true
   },
-  userName: String,
-  userAvatar: String
 }, {
   timestamps: true
 });
@@ -51,21 +49,18 @@ const ProjectSchema = new Schema({
   due: {
     type: Date
   },
-  owner: {
+
+  projectOwner: {
     type: Schema.Types.ObjectId,
     ref: 'User',
-    //required: true
   },
   teamMembers: [{
     type: Schema.Types.ObjectId,
     ref: 'User',
-    //required: false
   }],
-  tasks: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Task',
-    //required: false
-  }]
-}, { timestamps: true });
 
-module.exports = mongoose.model('Project', ProjectSchema);
+  tasks:[TaskSchema]
+
+}, { timestamps: true });
+// taskmodel = mongoose.model('Task', TaskSchema)
+module.exports = mongoose.model('Project', ProjectSchema)

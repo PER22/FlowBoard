@@ -1,8 +1,21 @@
 <div class="project-container <%=project.priority%>">
-    <div class="title"><span class="priority-bubble <%=project.priority%>"><%=project.priority%></span> 
-        <%= project.title %> 
-    </div>
-    <div class="description"><%= project.description %></div>
-    <div class="due"><em><%= project.due.toLocaleDateString("en-us") %></em></div>    
+
+    <% if(project.priority && project.title){ %>
+        <div class="title"><span class="priority-bubble <%=project.priority%>"><%=project.priority%></span> 
+            <%= project.title %> 
+        </div>
+    <% } %>
+
+
+
+    <% if(project.description){ %>
+        <div class="description"><%= project.description %></div>
+    <% } %>
+
+
+    
+    <% if(project.due){ %>
+        <div class="due"><em><%= project.due.toLocaleDateString("en-us") %></em></div>    
+    <% } %>
     <div><a href="/projects/<%=project._id%>">More Details</a></div>
 </div>

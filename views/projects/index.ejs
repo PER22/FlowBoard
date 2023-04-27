@@ -1,15 +1,15 @@
 <%- include('../partials/header') %>
 
 
-
-
+<% if(projects.length>0){ %>
     <div class="project-list-container">
       <% projects.forEach(function(project) { %>
-        <%-include('../partials/projectoverview', {project: project}) %>
+        <%-include('../partials/projectoverview', {project}) %>
       <% }); %>
     </div>
-  
- 
- 
+
+<% }else{ %>
+    <%- include('../partials/noprojects') %>
+ <% } %>
 
 <%- include('../partials/footer') %>

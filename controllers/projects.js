@@ -3,6 +3,8 @@ const User = require('../models/user');
 
 async function indexProject(req, res) {
   const projects = await Project.find({ projectOwner: req.user._id });
+  console.log("Index project function called.")
+  console.log(JSON.stringify(projects));
   res.render('projects/index', { title: 'My Projects', projects:projects });
 }
 
