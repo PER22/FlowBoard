@@ -1,17 +1,53 @@
 <%- include('../partials/header') %>
 
 <section id="show-page">
-  <h1><%= project.title %></h1>
-  <p><%= project.description %></p>
-  <div><%= project.priority %></div>
-  
-  <div class="project-button-container">
-    <div class="edit-project-button"><a class="edit-project-link"href="/projects/<%=project._id%>/edit">Edit Project</a></div>
 
-    <form id="project-delete-form" action="/projects/<%=project._id%>?_method=DELETE" method="POST">
-      <input class="delete-project-button" type="submit" value="Delete Project">
-    </form>
-  </div>
+  <section id="project-info-header">
+    <p><%= project.description %></p>
+    <div class="project-button-container">
+
+      <div class="add-task-button"><a id="add-task-link" href="/projects/<%=project._id%>/tasks/new">Add a new task</a></div>
+      <div class="edit-project-button"><a class="edit-project-link"href="/projects/<%=project._id%>/edit">Edit Project</a></div>
+  
+      <form id="project-delete-form" action="/projects/<%=project._id%>?_method=DELETE" method="POST">
+        <input class="delete-project-button" type="submit" value="Delete Project">
+      </form>
+    </div>
+  </section>
+
+
+  
+
+
+  <section id="todo-column">
+    <h3>To Do</h3>
+    <% todo.forEach((task)=>{ %>
+      <%- include('../partials/taskitem', {project ,task})%>
+    <% }); %>
+  </section>
+
+  <section id="in-progress-tasks-column">
+    <h3>In Progress</h3>
+    <% inprogress.forEach((task)=>{ %>
+      <%- include('../partials/taskitem', {project ,task})%>
+    <% }); %>
+
+  </section>
+  <section id="completed-tasks-column">
+    <h3>Completed</h3>
+    <% completed.forEach((task)=>{ %>
+      <%- include('../partials/taskitem', {project ,task})%>
+    <% }); %>
+  </section>
+
+
+
+
+
+
+
+ 
+  
     
 </section>
   

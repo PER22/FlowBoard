@@ -71,9 +71,31 @@ td{
 padding: .5rem;
 }
 
+#show-page{
+  width: 75%;
+}
+
+.task-title{
+  font-size: 20px;
+  text-decoration: underline;
+}
+
+.task-description{
+  font-size: 14px;
+}
+
+.task-priority{
+  font-size: 18px;
+}
+
+
+.task-due{
+  font-size: 14px;
+}
+
 .priority-bubble {
-  width: 1em
-  height 1em;
+  width: 1em;
+  height: 1em;
 }
 
 .project-list-container{
@@ -95,11 +117,11 @@ padding: .5rem;
   color:white;
 }
 
-.P1.project-container {background-color: rgba(255, 161, 161, 0.65);}
-.P2.project-container {background-color: rgba(255, 212, 132, 0.65);}
-.P3.project-container {background-color: rgba(255, 255, 181, 0.65);}
-.P4.project-container {background-color: rgba(153, 255, 153, 0.65);}
-.P5.project-container {background-color: rgba(157, 163, 255, 0.65);}
+.P1.project-container, .P1.task-item-container {background-color: rgba(255, 161, 161, 0.65);}
+.P2.project-container, .P2.task-item-container {background-color: rgba(255, 212, 132, 0.65);}
+.P3.project-container, .P3.task-item-container {background-color: rgba(255, 255, 181, 0.65);}
+.P4.project-container, .P4.task-item-container {background-color: rgba(153, 255, 153, 0.65);}
+.P5.project-container, .P5.task-item-container {background-color: rgba(157, 163, 255, 0.65);}
 
 .P1.priority-bubble {background-color: rgb(255, 70, 70);}
 .P2.priority-bubble {background-color: rgb(255, 190, 69);}
@@ -128,10 +150,84 @@ padding: .5rem;
   color: white;
 }
 
+#new-task-button {
+  background: #146c00df;
+  color: white;
+  border-color: #000000;  
+  border-radius: 1em;
+  padding: .3em
+}
+
+.add-task-button {
+  background: #227f00;
+  border: 1px solid black;
+  border-radius: 1em; 
+  width:fit-content;
+  padding: .3em
+}
+
+#add-task-link{
+  text-decoration: none;
+  color: white;
+}
+
+.task-item-container{
+  padding: .5em;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  margin-bottom: 1em;
+  border-radius: 1em;
+}
+
+
+
+#project-info-header{
+  padding: .5em;
+  border-bottom: 5px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  margin-bottom: 1em;
+
+
+}
+
+#new-task-form-container{
+  background-color: #5afa80;
+  padding: 2em;
+  border-radius: 1em;
+  border: 2px solid black;
+}
+
+#new-task-form-container *, #edit-task-form-container *, #new-project-form-container *{
+  margin-bottom: 1em;
+}
+
+#new-project-form-container{
+  background-color: #5afa80;
+  padding: 2em;
+  border-radius: 1em;
+  border: 2px solid black;
+}
+
+#edit-task-form-container{
+  background-color: #f8fb65;
+  padding: 2em;
+  border-radius: 1em;
+  border: 2px solid black;
+}
+
 .project-button-container{
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  width: 80%;
 }
 
 #empty-project-folder-img{
