@@ -2,15 +2,27 @@
 
 
 
-<% if(projects.length > 0){ %>
-  <div id="project-list-container"></div>
-  <% projects.forEach((project)=>{ %>
-    <%- include('../partials/projectoverview', { project: project }) %> 
-  <% }); %>
-  </div>
-<%}else{ %>
-  <%- include('../partials/noprojects') %>
-<% } %>
+
+<table class="project-index-table">
+  <tbody>
+    <tr>
+      <td class="title">Title</td>
+      <td class="description">Description%></td>
+      <td class="due">Due</td>
+      <td class="priority">Priority%></td>
+      <td>See more</td>
+    </tr>
+    <% projects.forEach(function(project) { %>
+      <tr class= <%= project.priority %> >
+        <td class="title"><%= project.title %></td>
+        <td class="description"><%= project.description %></td>
+        <td class="due"><%= project.due %></td>
+        <td class="priority"><%= project.priority %></td>
+        <td><a href="/projects/<%=project._id%>">DETAILS</a></td>
+      </tr>
+      <% }); %>
+    </tbody>
+</table>
 
 
 
