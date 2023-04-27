@@ -3,27 +3,24 @@
 
 
 <table class="project-index-table">
-  <thead>
-    <tr>
-      <th scope="col">Title</th>
-      <th scope="col">Description</th>
-      <th scope="col">Due</th>
-      <th scope="col">Priority</th>
-    </tr>
-  </thead>
   <tbody>
-    <% projects.forEach(function(project) { %>
-      
-    <tr class= <%= project.priority %>>
-      <!-- <th scope="row">1</th> -->
-      <td><%= project.title %></td>
-          <td><span class="priority-bubble"></span><%= project.description %></td>
-          <td><%= project.due %></td>
-          <td><%= project.priority %></td>
-          <td><a href="/projects/<%=project._id%>">DETAILS</a></td>
+    <tr>
+      <td class="title">Title</td>
+      <td class="description">Description%></td>
+      <td class="due">Due</td>
+      <td class="priority">Priority%></td>
+      <td>See more</td>
     </tr>
-    <% }); %>
-  </tbody>
+    <% projects.forEach(function(project) { %>
+      <tr class= <%= project.priority %> >
+        <td class="title"><%= project.title %></td>
+        <td class="description"><%= project.description %></td>
+        <td class="due"><%= project.due %></td>
+        <td class="priority"><%= project.priority %></td>
+        <td><a href="/projects/<%=project._id%>">DETAILS</a></td>
+      </tr>
+      <% }); %>
+    </tbody>
 </table>
 
 
