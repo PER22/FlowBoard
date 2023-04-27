@@ -2,53 +2,16 @@
 
 
 
-<table class="project-index-table">
-  <thead>
-    <tr>
-      <th scope="col">Title</th>
-      <th scope="col">Description</th>
-      <th scope="col">Due</th>
-      <th scope="col">Priority</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% projects.forEach(function(project) { %>
-      
-    <tr class= <%= project.priority %>>
-      <!-- <th scope="row">1</th> -->
-      <td><%= project.title %></td>
-          <td><span class="priority-bubble"></span><%= project.description %></td>
-          <td><%= project.due %></td>
-          <td><%= project.priority %></td>
-          <td><a href="/projects/<%=project._id%>">DETAILS</a></td>
-    </tr>
-    <% }); %>
-  </tbody>
-</table>
+<% if(projects.length > 0){ %>
+  <div id="project-list-container"></div>
+  <% projects.forEach((project)=>{ %>
+    <%- include('../partials/projectoverview', { project: project }) %> 
+  <% }); %>
+  </div>
+<%}else{ %>
+  <%- include('../partials/noprojects') %>
+<% } %>
 
 
-
-
-<!-- <table id="list">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Due</th>
-        <th>Priority</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% projects.forEach(function(project) { %>
-        <tr class= <%= project.priority %> >
-          <td><%= project.title %></td>
-          <td><%= project.description %></td>
-          <td><%= project.due %></td>
-          <td><%= project.priority %></td>
-          <td><a href="/projects/<%=project._id%>">DETAILS</a></td>
-        </tr>
-        <% }); %>
-      </tbody>
-    </table> -->
 
 <%- include('../partials/footer') %>

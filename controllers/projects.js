@@ -3,11 +3,11 @@ const User = require('../models/user');
 
 async function indexProject(req, res) {
   const projects = await Project.find({ projectOwner: req.user._id });
-  res.render('projects/index', { title: 'Projects Index Template', projects:projects });
+  res.render('projects/index', { title: 'My Projects', projects:projects });
 }
 
 function newProject(req, res) {
-  res.render('projects/new', { title: 'Create Project' });
+  res.render('projects/new', { title: 'Create A Project' });
 }
 
 async function createProject(req, res) {
