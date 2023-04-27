@@ -7,7 +7,6 @@
   <div><%= project.priority %></div>
   
   <a href="/projects/<%=project._id%>/edit">Click to edit me</a>
-  <a href="/projects/<%=project._id%>/tasks/new">Click to add task</a>
   <form id="project-delete-form" action="/projects/<%=project._id%>?_method=DELETE" method="POST">
     <input type="submit" value="Delete Project">
   </form>
