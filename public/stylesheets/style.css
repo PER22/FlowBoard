@@ -270,6 +270,78 @@ hr {
 .review-user img {
   border-radius: 50%;
   height: 40px;
+
+} */
+
+
+
+
+.navbar-brand > img {
+  height: 2rem;
+  margin-left: 1rem;
+}
+.nav-link > img {
+  height: 1.5rem;
+}
+body {
+  background-color: #e7e1d8;
+
+}
+
+
+.index-page-words, h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Amatic SC', cursive;
+  font-weight: bold;
+}
+
+
+.index-page-words {
+  margin-top: 1rem;
+  font-size: 5em;
+}
+
+.project-index-table, thead {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+table{
+  border-collapse: separate;
+  border-spacing: 0 1rem;
+  background-color: #e7e1d8;
+}
+td{
+padding: .5rem;
+}
+
+.priority-bubble {
+  width: 1em
+  height 1em;
+}
+
+
+.P1, .P2, .P3, .P4, .P5{
+  background-color: white;
+}
+
+.P1 {
+  color: #e9311a;
+}
+.P2 {
+  color: #ed6335;
+}
+.P3 {
+  color: #8db4ad;
+}
+.P4{
+  color: #026c80;
+}
+.P5{
+  color: #064c72;
 }
 
 .P1{background-color: rgb(180, 0, 0);}
@@ -278,9 +350,23 @@ hr {
 .P4{background-color: rgb(0, 128, 0);}
 .P5{background-color: rgb(60, 60, 255);}
 
+
 .P1.project-container {background-color: rgba(180, 0, 0, 0.55);}
 .P2.project-container {background-color: rgba(180, 90, 0, 0.55);}
 .P3.project-container {background-color: rgba(230, 230, 0, 0.55);}
 .P4.project-container {background-color: rgba(0, 128, 0, 0.55);}
 .P5.project-container {background-color: rgba(60, 60, 255, 0.55);}
+
+@media only screen and (min-width: 990px) {
+h1{
+  font-size: 8em;
+}
+}
+
+
+@media only screen and (max-width: 991px) {
+.description, .due {
+  display: none;
+}
+}
 
