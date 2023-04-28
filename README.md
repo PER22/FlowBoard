@@ -4,6 +4,8 @@ An app that allows users to stay organized by creating project and tasks.
 # Screenshot
 
 <img src="https://i.imgur.com/hfhmyE4.png">
+<img src="https://i.imgur.com/DSd7Fxv.png">
+<img src="https://i.imgur.com/OpIadQl.png">
 
 # Technologies Used
 
