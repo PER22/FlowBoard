@@ -1,5 +1,5 @@
 # Flowboard
-An app that allows users to stay organized by creating project and tasks.
+An app that allows users to stay organized by creating project and adding tasks to them. Users can only see the projects that they own or are a teammember of. Projects and Tasks both have due dates, priorities, titles, and descriptions.
 
 # Screenshot
 
