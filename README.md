@@ -6,6 +6,7 @@ An app that allows users to stay organized by creating project and tasks.
 <img src="https://i.imgur.com/hfhmyE4.png">
 <img src="https://i.imgur.com/DSd7Fxv.png">
 <img src="https://i.imgur.com/OpIadQl.png">
+<img src="https://i.imgur.com/2qy6tYp.png">
 
 # Technologies Used
 
