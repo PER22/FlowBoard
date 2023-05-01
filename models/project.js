@@ -66,5 +66,5 @@ const ProjectSchema = new Schema({
   tasks:[TaskSchema]
 
 }, { timestamps: true });
-// taskmodel = mongoose.model('Task', TaskSchema)
+
 module.exports = mongoose.model('Project', ProjectSchema)

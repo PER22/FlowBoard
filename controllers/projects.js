@@ -3,7 +3,6 @@ const User = require('../models/user');
 
 async function indexProject(req, res) {
   const projects = await Project.find({ projectOwner: req.user._id });
-  console.log(JSON.stringify(projects));
   res.render('projects/index', { title: 'My Projects', projects:projects });
 }
 
@@ -31,11 +30,8 @@ async function showProject(req, res) {
   const currentProject = await Project.findOne({ _id: req.params.id, projectOwner: req.user._id });
   if (!currentProject) return res.status(404).send('Project not found. From showProject');
   const completedTasks = currentProject.tasks.filter((task)=>{return task.status === "completed" });
-  console.log("Completed: " + JSON.stringify(completedTasks))
   const todoTasks = currentProject.tasks.filter((task)=>{return task.status === "to-do" });
-  console.log("Todo: " + JSON.stringify(todoTasks))
   const inProgressTasks = currentProject.tasks.filter((task)=>{return task.status === "in-progress" });
-  console.log("Completed: " + JSON.stringify(completedTasks))
   res.render( 'projects/show',{title : currentProject.title, project:currentProject, completed: completedTasks, todo: todoTasks, inprogress: inProgressTasks});
 }
 
@@ -80,7 +76,6 @@ async function indexTask(req, res){
 
 async function newTask(req, res){
   const currentProject = await Project.findOne({ projectOwner: req.user._id,  _id: req.params.projectId });
-  console.log("Logging currentProject from controllers/projects.js newTask().")
   res.render("tasks/new", { title: 'Create Task', project: currentProject });
 }
 
@@ -112,20 +107,13 @@ async function showTask(req, res){
 
 async function editTask(req, res){
   const currentProject = await Project.findOne({ _id: req.params.projectId, projectOwner: req.user._id });
-  if (!currentProject) console.log('Project not found. From editTask()');
   const taskToEdit = currentProject.tasks.find((task)=>{return task._id == req.params.taskId})
-  if (!taskToEdit) console.log('Task not found. From editTask()');
-  console.log("1. " + JSON.stringify(currentProject));
-  console.log("2. " + JSON.stringify(taskToEdit));
   res.render('tasks/edit', { title: `Edit "${taskToEdit.title}" in ${currentProject.title}`, project: currentProject, task: taskToEdit });
 }
 
 async function updateTask(req, res){
   const project = await Project.findOne({ _id: req.params.projectId, projectOwner: req.user._id });
-  if (!project) return res.status(404).send('Project not found. From UpdateTask()');
-
   const taskToUpdate = project.tasks.find((task)=>{return task._id == req.params.taskId});
-  if (!taskToUpdate) return res.status(404).send('Task not found. From updateTask()');
   taskToUpdate.status = req.body.status;
   taskToUpdate.title = req.body.title;
   taskToUpdate.description = req.body.description;
@@ -143,9 +131,7 @@ async function updateTask(req, res){
 }
 
 async function destroyTask(req, res){
-  console.log("DELETE ROUTE CALLED *************************************")
   const currentProject = await Project.findOne({ _id: req.params.projectId, projectOwner: req.user._id });
-  if (!currentProject) console.log('Project not found. From editTask()');
   const indexToDelete = currentProject.tasks.findIndex((task)=>{return task._id == req.params.taskId});
   currentProject.tasks.splice(indexToDelete,1);
   try {
