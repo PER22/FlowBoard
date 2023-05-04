@@ -6,7 +6,8 @@
       <tr>
         <th>Title</th>
         <th>Description</th>
-        <th>Due</th>
+        <th>Start Date</th>
+        <th>Due Date</th>
         <th>Priority</th>
       </tr>
     </thead>
@@ -14,7 +15,8 @@
         <tr class= <%= project.priority %> >
           <td><%= task.title %></td>
           <td><%= task.description %></td>
-          <td><%= task.due %></td>
+          <td><%= task.startDate %></td>
+          <td><%= task.dueDate %></td>
           <td><%= task.priority %></td>
           <td><a href="/projects/<%=project.id%>/tasks/<%=task.id%>/edit">Edit this task</a></td>
           <td><form id="task-delete-form" action="/projects/<%=project._id%>/tasks/<%=task._id%>?_method=DELETE" method="POST">

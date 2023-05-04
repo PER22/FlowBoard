@@ -1,20 +1,20 @@
 <%- include('../partials/header') %>
-<div id="edit-task-form-container">
-  <form method="POST" action="/projects/<%= project._id %>/tasks/<%=task._id%>?_method=PUT">
+  <div id="edit-task-form-container">
+    <form id="edit-task-form" method="POST" action="/projects/<%= project._id %>/tasks/<%=task._id%>?_method=PUT">
       <label>Title:</label>
       <input type="text" name="title" value="<%=task.title%>"><br>
-      
+
       <label>Description:</label>
       <textarea name="description"><%=task.description%></textarea><br>
-      
+
       <label>Priority</label>
       <select name="priority">
-        <option value="P1">P1</option>
-        <option value="P2">P2</option>
-        <option value="P3">P3</option>
-        <option value="P4">P4</option>
-        <option value="P5">P5</option>
-      </select><br>
+        <option value="P1" <% if (project.priority==="P1" ) { %>selected<% } %>>P1</option>
+        <option value="P2" <% if (project.priority==="P2" ) { %>selected<% } %>>P2</option>
+        <option value="P3" <% if (project.priority==="P3" ) { %>selected<% } %>>P3</option>
+        <option value="P4" <% if (project.priority==="P4" ) { %>selected<% } %>>P4</option>
+        <option value="P5" <% if (project.priority==="P5" ) { %>selected<% } %>>P5</option>
+      </select>
 
       <label>Status</label>
       <select name="status">
@@ -23,13 +23,22 @@
         <option value="completed">Completed</option>
       </select><br>
 
-      <label>Due:</label>
-      <input type="datetime-local" name="due" value="<%=task.due%>"><br>
-      
-      <input type="submit" value="Save Changes">
-  </form>
-  <form id="task-delete-form" action="/projects/<%=project._id%>/tasks/<%=task._id%>?_method=DELETE" method="POST">
-    <input type="submit" value="Delete Task">
-  </form>
-</div>
-<%- include('../partials/footer') %>
+      <label>Start Date:</label>
+      <input type="datetime-local" name="startDate" value="<%=formatDate(task.startDate)%>"><br>
+
+      <label>Due Date:</label>
+      <input type="datetime-local" name="dueDate" value="<%=formatDate(task.dueDate)%>"><br>
+
+      <% function formatDate(date) { const year=date.getFullYear(); const month=(date.getMonth() +
+        1).toString().padStart(2, '0' ); const day=date.getDate().toString().padStart(2, '0' ); const
+        hours=date.getHours().toString().padStart(2, '0' ); const minutes=date.getMinutes().toString().padStart(2, '0'
+        ); return `${year}-${month}-${day}T${hours}:${minutes}`; } %>
+
+        <input type="submit" value="Save Changes">
+    </form>
+
+    <form id="task-delete-form" action="/projects/<%=project._id%>/tasks/<%=task._id%>?_method=DELETE" method="POST">
+      <input type="submit" value="Delete Task">
+    </form>
+  </div>
+  <%- include('../partials/footer') %>
