@@ -9,18 +9,18 @@
 
       <label>Priority</label>
       <select name="priority">
-        <option value="P1" <% if (project.priority==="P1" ) { %>selected<% } %>>P1</option>
-        <option value="P2" <% if (project.priority==="P2" ) { %>selected<% } %>>P2</option>
-        <option value="P3" <% if (project.priority==="P3" ) { %>selected<% } %>>P3</option>
-        <option value="P4" <% if (project.priority==="P4" ) { %>selected<% } %>>P4</option>
-        <option value="P5" <% if (project.priority==="P5" ) { %>selected<% } %>>P5</option>
+        <option value="P1" <% if (task.priority==="P1" ) { %>selected<% } %> >P1</option>
+        <option value="P2" <% if (task.priority==="P2" ) { %>selected<% } %> >P2</option>
+        <option value="P3" <% if (task.priority==="P3" ) { %>selected<% } %> >P3</option>
+        <option value="P4" <% if (task.priority==="P4" ) { %>selected<% } %> >P4</option>
+        <option value="P5" <% if (task.priority==="P5" ) { %>selected<% } %> >P5</option>
       </select>
 
       <label>Status</label>
       <select name="status">
-        <option value="to-do">To Do</option>
-        <option value="in-progress">In Progress</option>
-        <option value="completed">Completed</option>
+        <option value="to-do" <% if (task.status==="to-do" ) { %>selected<% } %> >To Do</option>
+        <option value="in-progress" <% if (task.status==="in-progress" ) { %>selected<% } %> >In Progress</option>
+        <option value="completed" <% if (task.status==="completed" ) { %>selected<% } %> >Completed</option>
       </select><br>
 
       <label>Start Date:</label>

@@ -116,7 +116,7 @@ async function showTask(req, res) {
 
 async function editTask(req, res) {
   const currentProject = await Project.findOne({ _id: req.params.projectId, projectOwner: req.user._id });
-  const taskToEdit = currentProject.tasks.find((task) => { return task._id == req.params.taskId })
+  const taskToEdit = currentProject.tasks.find((task) => { return task._id == req.params.taskId });
   res.render('tasks/edit', { title: `Edit "${taskToEdit.title}" in ${currentProject.title}`, project: currentProject, task: taskToEdit });
 }
 

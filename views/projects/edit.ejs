@@ -9,10 +9,10 @@
   <textarea name="description"><%=project.description%></textarea><br>
 
   <label>Start Date:</label>
-  <input type="datetime-local" name="startDate"><br>
+  <input type="datetime-local" name="startDate" value="<%=formatDate(task.startDate)%>"><br>
 
   <label>Due Date:</label>
-  <input type="datetime-local" name="dueDate"><br>
+  <input type="datetime-local" name="dueDate" value="<%=formatDate(task.dueDate)%>"><br>
 
  <label>Priority</label>
 <select name="priority">
