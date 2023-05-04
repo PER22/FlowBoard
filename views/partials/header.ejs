@@ -27,10 +27,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <div class="container" style="max-width: 800px;"></div>
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="/projects" <%- title==='Projects' ? 'class="active"' : '' %>>My Projects</a>
-        </li>
         <% if (user) { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/projects" <%- title==='Projects' ? 'class="active"' : '' %>>My Projects</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="/projects/new" <%- title==='Create Project' ? 'class="active"' : '' %>>Create
               Project</a>
