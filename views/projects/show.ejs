@@ -16,30 +16,33 @@
   </section>
 
 
-  
+  <section id="columns-container">
+    <section id="todo-column">
+      <h3>To Do</h3>
+      <%if(todo.length === 0){ %>
+          <%- include('../partials/nothingtodo') %>
+      <% }else{ %> 
+        <% todo.forEach((task)=>{ %>
+          <%- include('../partials/taskitem', {project, task})%>
+        <% }); %>
+      <% } %>
+    </section>
 
+    <section id="in-progress-tasks-column">
+      <h3>In Progress</h3>
+      <% inprogress.forEach((task)=>{ %>
+        <%- include('../partials/taskitem', {project ,task})%>
+      <% }); %>
 
-  <section id="todo-column">
-    <h3>To Do</h3>
-    <% todo.forEach((task)=>{ %>
-      <%- include('../partials/taskitem', {project ,task})%>
-    <% }); %>
+    </section>
+    
+    <section id="completed-tasks-column">
+      <h3>Completed</h3>
+      <% completed.forEach((task)=>{ %>
+        <%- include('../partials/taskitem', {project ,task})%>
+      <% }); %>
+    </section>
   </section>
-
-  <section id="in-progress-tasks-column">
-    <h3>In Progress</h3>
-    <% inprogress.forEach((task)=>{ %>
-      <%- include('../partials/taskitem', {project ,task})%>
-    <% }); %>
-
-  </section>
-  <section id="completed-tasks-column">
-    <h3>Completed</h3>
-    <% completed.forEach((task)=>{ %>
-      <%- include('../partials/taskitem', {project ,task})%>
-    <% }); %>
-  </section>
-
 
 
 

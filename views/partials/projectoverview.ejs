@@ -14,8 +14,8 @@
 
 
     
-    <% if(project.due){ %>
-        <div class="due"><em><%= project.due.toLocaleDateString("en-us") %></em></div>    
+    <% if(project.dueDate){ %>
+        <div class="dueDate"><em><%= project.dueDate.toLocaleDateString("en-us") %></em></div>    
     <% } %>
     <div><a href="/projects/<%=project._id%>">More Details</a></div>
 </div>

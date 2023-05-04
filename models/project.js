@@ -5,23 +5,31 @@ const Schema = mongoose.Schema;
 const TaskSchema = new Schema({
   title: {
     type: String,
-    //required: true
+    required: true
   },
   description: {
     type: String,
-    //required: true
+    required: true
   },
-  status:{
+  status: {
     type: String,
-    enum:["to-do", "in-progress", "completed"]
+    enum: ["to-do", "in-progress", "completed"],
+    default: "to-do",
   },
   priority: {
     type: String,
-    enum: ["P1", "P2", "P3", "P4", "P5"]
+    enum: ["P1", "P2", "P3", "P4", "P5"],
+    default: "P3"
   },
-  due: {
-    type: Date
+  startDate: {
+    type: Date,
+    required: true
   },
+  dueDate: {
+    type: Date,
+    required: true
+  },
+
   teamMembers: [{
     type: Schema.Types.ObjectId,
     ref: 'User',
@@ -30,30 +38,33 @@ const TaskSchema = new Schema({
   taskOwner: {
     type: Schema.Types.ObjectId,
     ref: 'User',
-    //required: true
+    required: true
   },
 }, {
   timestamps: true
 });
 
-
-
 const ProjectSchema = new Schema({
   title: {
     type: String,
-    //required: true
+    required: true,
+    minlength: 5,
+    maxlength: 40
   },
   description: {
-    type: String
+    type: String,
+    required: true
   },
   priority: {
     type: String,
-    enum: ["P1", "P2", "P3", "P4", "P5"]
+    enum: ["P1", "P2", "P3", "P4", "P5"],
+    default: "P3",
+    required: true
   },
-  due: {
-    type: Date
+  dueDate: {
+    type: Date,
+    required: true
   },
-
   projectOwner: {
     type: Schema.Types.ObjectId,
     ref: 'User',
@@ -63,8 +74,8 @@ const ProjectSchema = new Schema({
     ref: 'User',
   }],
 
-  tasks:[TaskSchema]
+  tasks: [TaskSchema]
 
 }, { timestamps: true });
-// taskmodel = mongoose.model('Task', TaskSchema)
+
 module.exports = mongoose.model('Project', ProjectSchema)
